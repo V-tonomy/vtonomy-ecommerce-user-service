@@ -7,7 +7,7 @@ COPY ./tsconfig*.json .
 
 RUN npm install
 
-COPY src ./src
+COPY . .
 
-EXPOSE 3000
+EXPOSE 3002
 CMD ["npm", "run", "start:dev"]
