@@ -1,11 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Param,
-  Patch,
-  Post
-} from '@nestjs/common';
+import { Body, Controller, Delete, Param, Patch, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import {
   Ctx,
@@ -21,7 +14,7 @@ import {
   MessageResponseDTO,
   ResponseDTO,
   User_Created,
-  User_GetByEmail
+  User_GetByEmail,
 } from 'vtonomy';
 
 @Controller('user')

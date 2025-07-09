@@ -30,7 +30,7 @@ import { UserController } from './infras/user.transport';
         transport: Transport.RMQ,
         options: {
           urls: [process.env.RABBITMQ_URL ?? 'amqp://vtonomy:123456@localhost:5672'],
-          queue: 'mail_queue',
+          queue: 'notification_queue',
           queueOptions: {
             durable: false,
           },
