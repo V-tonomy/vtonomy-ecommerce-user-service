@@ -15,15 +15,19 @@ export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
   ) {}
 
   async execute(command: CreateUserCommand): Promise<string> {
-    const { name, email, password, role } = command.props;
+    const { name, email, password, role, phone } = command.props;
     const id = randomUUID();
 
     const newUser = new User(
       id,
       name,
       email,
+      false,
+      phone,
+      false,
       password,
       role,
+      true,
       new Date(),
       new Date(),
     );

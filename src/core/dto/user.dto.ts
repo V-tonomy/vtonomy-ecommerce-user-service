@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsEmail,
   IsEnum,
   IsNotEmpty,
@@ -20,6 +21,9 @@ export class CreateUserDTO {
   @IsEmail()
   email: string;
 
+  @IsOptional()
+  phone: string;
+
   @IsNotEmpty()
   @MinLength(6)
   password: string;
@@ -36,6 +40,18 @@ export class UpdateUserDTO {
   @IsOptional()
   @IsEmail()
   email?: string;
+
+  @IsOptional()
+  isEmailVerified?: boolean;
+
+  @IsOptional()
+  phone?: string;
+
+  @IsOptional()
+  isPhoneVerified?: boolean;
+
+  @IsOptional()
+  isActive?: boolean;
 
   @IsOptional()
   @MinLength(6)

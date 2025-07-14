@@ -14,6 +14,7 @@ import {
   MessageResponseDTO,
   ResponseDTO,
   User_Created,
+  User_EmailVerified,
   User_GetByEmail,
 } from 'vtonomy';
 
@@ -33,6 +34,24 @@ export class UserController {
       const id = await this.commandBus.execute(CreateUserCommand.create(data));
 
       return { success: true, data: id };
+    } catch (error) {
+      return { success: false, error: error?.errorResponse?.errmsg || 'Error' };
+    }
+  }
+
+  @MessagePattern(User_EmailVerified)
+  public async handlerVerifyEmail(
+    @Payload() data: any,
+    @Ctx() context: RmqContext,
+  ) {
+    console.log("🚀 ~ UserController ~ data:", data)
+    try {
+      const { id, ...updatedData } = data;
+      const res = await this.commandBus.execute(
+        UpdateUserByIdCommand.create(id, updatedData),
+      );
+
+      return new ResponseDTO(res);
     } catch (error) {
       return { success: false, error: error?.errorResponse?.errmsg || 'Error' };
     }

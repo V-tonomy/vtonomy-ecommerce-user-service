@@ -5,8 +5,12 @@ export interface IUser {
   id: string;
   name: string;
   email: string;
+  isEmailVerified: boolean;
+  phone: string;
+  isPhoneVerified: boolean;
   password: string;
   role: EUserRole;
+  isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

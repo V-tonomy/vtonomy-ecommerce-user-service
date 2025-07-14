@@ -9,14 +9,26 @@ export class UserMongo {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, lowercase: true, trim: true })
   email: string;
+
+  @Prop({ required: true, default: false })
+  isEmailVerified: boolean;
+
+  @Prop({ unique: true, trim: true })
+  phone: string;
+
+  @Prop({ required: true, default: false })
+  isPhoneVerified: boolean;
 
   @Prop({ required: true })
   password: string;
 
   @Prop({ enum: EUserRole, default: EUserRole.USER })
   role: EUserRole;
+
+  @Prop({ required: true, default: true })
+  isActive: boolean;
 
   @Prop()
   createdAt: Date;
