@@ -8,8 +8,6 @@ export class CreateUserCommand implements ICommand {
     this.props = props;
   }
 
-  validate() {}
-
   static create(props: CreateUserDTO) {
     return new CreateUserCommand(props);
   }

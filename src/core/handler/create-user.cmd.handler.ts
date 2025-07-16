@@ -32,7 +32,12 @@ export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
       new Date(),
     );
 
-    await this.userRepository.insert(newUser);
+    try {
+      await this.userRepository.insert(newUser);
+    } catch (err) {
+      console.log(err)
+      throw err
+    }
     this.searchService.send(User_Created, newUser).subscribe();
     return id;
   }

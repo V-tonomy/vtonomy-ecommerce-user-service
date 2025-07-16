@@ -15,7 +15,7 @@ export class UserMongo {
   @Prop({ required: true, default: false })
   isEmailVerified: boolean;
 
-  @Prop({ unique: true, trim: true })
+  @Prop({ trim: true })
   phone: string;
 
   @Prop({ required: true, default: false })

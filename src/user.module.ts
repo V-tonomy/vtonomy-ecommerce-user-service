@@ -21,7 +21,7 @@ import { UserController } from './infras/user.transport';
           urls: [process.env.RABBITMQ_URL ?? 'amqp://vtonomy:123456@localhost:5672'],
           queue: 'search_queue',
           queueOptions: {
-            durable: false,
+            durable: true,
           },
         },
       },
@@ -32,7 +32,7 @@ import { UserController } from './infras/user.transport';
           urls: [process.env.RABBITMQ_URL ?? 'amqp://vtonomy:123456@localhost:5672'],
           queue: 'notification_queue',
           queueOptions: {
-            durable: false,
+            durable: true,
           },
         },
       },
@@ -43,7 +43,7 @@ import { UserController } from './infras/user.transport';
           urls: [process.env.RABBITMQ_URL ?? 'amqp://vtonomy:123456@localhost:5672'],
           queue: 'auth_queue',
           queueOptions: {
-            durable: false,
+            durable: true,
           },
         },
       },
