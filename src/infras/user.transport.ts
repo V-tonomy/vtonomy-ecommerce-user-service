@@ -44,7 +44,6 @@ export class UserController {
     @Payload() data: any,
     @Ctx() context: RmqContext,
   ) {
-    console.log("🚀 ~ UserController ~ data:", data)
     try {
       const { id, ...updatedData } = data;
       const res = await this.commandBus.execute(

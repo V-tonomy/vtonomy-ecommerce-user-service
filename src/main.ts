@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { JwtAuthGuard, PORTS } from 'vtonomy';
+import { PORTS } from 'vtonomy';
 import { UserModule } from './user.module';
 
 async function bootstrap() {
@@ -9,10 +9,12 @@ async function bootstrap() {
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
-      urls: [process.env.RABBITMQ_URL ?? 'amqp://vtonomy:123456@localhost:5672'],
+      urls: [
+        process.env.RABBITMQ_URL ?? 'amqp://vtonomy:123456@localhost:5672',
+      ],
       queue: 'user_queue',
       queueOptions: {
-        durable: false,
+        durable: true,
       },
     },
   });
