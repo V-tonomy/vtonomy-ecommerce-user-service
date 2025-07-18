@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { PORTS } from 'vtonomy';
+import { PORTS, QueueConfig } from 'vtonomy';
 import { UserModule } from './user.module';
 
 async function bootstrap() {
@@ -13,9 +13,7 @@ async function bootstrap() {
         process.env.RABBITMQ_URL ?? 'amqp://vtonomy:123456@localhost:5672',
       ],
       queue: 'user_queue',
-      queueOptions: {
-        durable: true,
-      },
+      queueOptions: QueueConfig.User_Client,
     },
   });
 
